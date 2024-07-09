@@ -1,4 +1,4 @@
-import MainFlow from "@/_components/MainFlow";
+import MainFlow from "@/components/MainFlow";
 import React from "react";
 
 const Page = () => {

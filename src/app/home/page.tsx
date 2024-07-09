@@ -1,4 +1,4 @@
-import HomeScreen from "@/_components/HomeScreen";
+import HomeScreen from "@/components/HomeScreen";
 import React from "react";
 
 const Page = () => {

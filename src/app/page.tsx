@@ -1,7 +1,7 @@
 "use client";
-import HomeScreen from "@/_components/HomeScreen";
-import MainFlow from "@/_components/MainFlow";
-import Result from "@/_components/Result";
+import HomeScreen from "@/components/HomeScreen";
+import MainFlow from "@/components/MainFlow";
+import Result from "@/components/Result";
 import axios from "axios";
 import { useEffect, useState } from "react";
 

@@ -1,4 +1,4 @@
-import Result from "@/_components/Result";
+import Result from "@/components/Result";
 import React from "react";
 
 const Page = () => {
