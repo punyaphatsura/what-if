@@ -1,0 +1,23 @@
+{
+    "p1": {
+        "nextPage": "p2",
+        "img1": "",
+        "text1": "",
+        "img2": "",
+        "buttonText": ""
+    },
+    "p2": {
+        "nextPage": "p3",
+        "img1": "",
+        "text1": "",
+        "img2": "",
+        "buttonText": ""
+    },
+    "p3": {
+        "nextPage": "p4",
+        "img1": "",
+        "text1": "",
+        "img2": "",
+        "buttonText": ""
+    },
+}
