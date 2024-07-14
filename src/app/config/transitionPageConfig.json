@@ -1,0 +1,23 @@
+{
+    "P1": {
+        "nextPage": "P2",
+        "img1": "/../../public/pagePictures/p1_1.png",
+        "text1": "คุณเคยสงสัยไหมว่า\nจริงๆ แล้วคุณสนใจอะไร\nอยากทำอะไร ที่ไม่ใช่แค่การเรียนแพทย์?",
+        "img2": "",
+        "buttonText": "ถัดไป"
+    },
+    "P2": {
+        "nextPage": "P3",
+        "img1": "",
+        "text1": "",
+        "img2": "",
+        "buttonText": ""
+    },
+    "P3": {
+        "nextPage": "P4",
+        "img1": "",
+        "text1": "",
+        "img2": "",
+        "buttonText": ""
+    }
+}
