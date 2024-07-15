@@ -28,7 +28,7 @@ const MainFlow = () => {
 const TransitionPage = ({ pageIdx, setPageIdx }: { pageIdx: string, setPageIdx: (idx: string) => void }) => {
   const { nextPage, img1, text1, img2, buttonText } = tconfig[pageIdx];
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-r from-purple-300 to-yellow-200">
+    <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-r from-purple-300 to-yellow-200 p-10">
       {img1.path && (
         <Image 
           src={img1.path} 
