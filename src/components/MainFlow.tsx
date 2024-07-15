@@ -7,12 +7,13 @@ import Image from 'next/image';
 type TransitionPageConfig = {
   [key: string]: {
     nextPage: string;
-    img1: string;
+    img1: { path: string, width: number, height: number };
     text1: string;
-    img2: string;
+    img2: { path: string, width: number, height: number };
     buttonText: string;
   };
 };
+
 const tconfig: TransitionPageConfig = transitionPageConfig;
 
 const MainFlow = () => {
@@ -25,12 +26,35 @@ const MainFlow = () => {
 };
 
 const TransitionPage = ({ pageIdx, setPageIdx }: { pageIdx: string, setPageIdx: (idx: string) => void }) => {
+  const { nextPage, img1, text1, img2, buttonText } = tconfig[pageIdx];
   return (
-    <div className="bg-green-500">
-      <h1>{tconfig[pageIdx].text1}</h1>
-      <Image src={tconfig[pageIdx].img1} alt="img1" width={500} height={500}/>
-      <button onClick={() => setPageIdx(tconfig[pageIdx].nextPage)}>
-        tconfig[pageIdx].
+    <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-r from-purple-300 to-yellow-200">
+      {img1.path && (
+        <Image 
+          src={img1.path} 
+          alt="img1" 
+          width={img1.width} 
+          height={img1.height} 
+          className="mb-4"
+        />
+      )}
+      <h1 className="bg-gray-700 text-white p-4 rounded-lg mb-4">
+        {text1}
+      </h1>
+      {img2.path && (
+        <Image 
+          src={img2.path} 
+          alt="img2" 
+          width={img2.width} 
+          height={img2.height} 
+          className="mb-4"
+        />
+      )}
+      <button 
+        onClick={() => setPageIdx(nextPage)}
+        className="bg-green-500 text-white py-2 px-6 rounded-full hover:bg-green-700 transition duration-300"
+      >
+        {buttonText}
       </button>
     </div>
   );
