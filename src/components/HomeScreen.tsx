@@ -1,9 +1,11 @@
+"use client";
 import React from "react";
+import Image from "next/image";
 
 const HomeScreen = () => {
   return (
     <div className="">
-      <p className="text-red-500">oejji อือำรื</p>
+      <Image src="/images/bg_text_home.png" alt="bg" width={150} height={150} />
     </div>
   );
 };
