@@ -22,9 +22,9 @@ export default function Home() {
  
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <p onClick={handleClick} className="cursor-pointer">
+      {/* <p onClick={handleClick} className="cursor-pointer">
         TAP JAAAAAA
-      </p>
+      </p> */}
       {state === 0 && <HomeScreen handleClick={handleClick} />}
       {state === 1 && <MainFlow />}
       {state === 2 && <Result />}
