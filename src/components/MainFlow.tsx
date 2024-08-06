@@ -42,7 +42,7 @@ const MainFlow = () => {
 const TransitionPage = ({ pageIdx, setPageIdx }: { pageIdx: string, setPageIdx: (idx: string) => void }) => {
   const { nextPage, img1, text1, img2, buttonText } = tconfig[pageIdx];
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-r from-purple-300 to-yellow-200 p-10">
+    <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-r from-wi-pink to-wi-lemon p-10">
       {img1.path && (
         <Image 
           src={img1.path} 
@@ -66,7 +66,7 @@ const TransitionPage = ({ pageIdx, setPageIdx }: { pageIdx: string, setPageIdx: 
       )}
       <button 
         onClick={() => setPageIdx(nextPage)}
-        className="bg-green-500 text-white py-2 px-6 rounded-full hover:bg-green-700 transition duration-300"
+        className="bg-wi-primary text-white py-2 px-6 rounded-full transition duration-300"
       >
         {buttonText}
       </button>
@@ -77,15 +77,15 @@ const TransitionPage = ({ pageIdx, setPageIdx }: { pageIdx: string, setPageIdx: 
 const QuestionPage = ({ pageIdx, setPageIdx }: { pageIdx: string, setPageIdx: (idx: string) => void }) => {
   const { question, options, buttonText, img } = qconfig[pageIdx];
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-r from-purple-300 to-yellow-200 p-10">
-      <h1 className="bg-green-500 text-white text-center p-4 rounded-lg mb-6">
+    <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-r from-wi-pink to-wi-lemon p-10">
+      <h1 className="bg-wi-primary text-white text-center p-4 rounded-lg mb-6">
         {question}
       </h1>
       <div className="flex flex-col space-y-4 mb-6">
         {options.map((option, idx) => (
           <button
             key={idx}
-            className="bg-white text-green-500 p-3 rounded-full shadow-md hover:bg-green-100 transition duration-300"
+            className="bg-white text-wi-primary p-3 rounded-full shadow-md transition duration-300"
             onClick={() => setPageIdx(option.nextPage)}
           >
             {option.text}
@@ -94,7 +94,7 @@ const QuestionPage = ({ pageIdx, setPageIdx }: { pageIdx: string, setPageIdx: (i
       </div>
       <button
         onClick={() => setPageIdx(options[0].nextPage)}
-        className="bg-green-500 text-white py-2 px-6 rounded-full hover:bg-green-700 transition duration-300"
+        className="bg-wi-primary text-white py-2 px-6 rounded-full transition duration-300"
       >
         {buttonText}
       </button>
