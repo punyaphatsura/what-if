@@ -181,22 +181,22 @@
         "options": [
             {
                 "text": "การสื่อสารให้มัดใจผู้ฟัง",
-                "nextPage": "",
+                "nextPage": "final",
                 "score": ""
             },
             {
                 "text": "การเปิดใจรับฟังคำแนะนำของผู้อื่น",
-                "nextPage": "",
+                "nextPage": "final",
                 "score": ""
             },
             {
                 "text": "การแก้ปัญหาแบบเป็นระบบ",
-                "nextPage": "",
+                "nextPage": "final",
                 "score": ""
             },
             {
                 "text": "การล้มแล้วลุกขึ้นมาใหม่ได้",
-                "nextPage": "",
+                "nextPage": "final",
                 "score": ""
             }
         ],
@@ -212,17 +212,17 @@
         "options": [
             {
                 "text": "การรู้จักตนเอง",
-                "nextPage": "",
+                "nextPage": "final",
                 "score": ""
             },
             {
                 "text": "การควบคุมอารมณ์อย่างเหมาะสม",
-                "nextPage": "",
+                "nextPage": "final",
                 "score": ""
             },
             {
                 "text": "การตามหาสิ่งที่ตัวเองต้องการในชีวิต",
-                "nextPage": "",
+                "nextPage": "final",
                 "score": ""
             }
         ],

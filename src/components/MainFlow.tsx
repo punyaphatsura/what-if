@@ -1,9 +1,15 @@
 'use client'
 
-import React from "react";
+import React, { FC, useState } from "react";
 import transitionPageConfig from "../app/config/transitionPageConfig.json";
 import questionPageConfig from "../app/config/questionPageConfig.json";
 import Image from 'next/image';
+import next from "next";
+
+interface Props {
+  setState: (state: number) => void;
+  setChoice: (choice: string) => void;
+}
 
 type TransitionPageConfig = {
   [key: string]: {
@@ -30,12 +36,12 @@ type QuestionPageConfig = {
 const tconfig: TransitionPageConfig = transitionPageConfig;
 const qconfig: QuestionPageConfig = questionPageConfig;
 
-const MainFlow = () => {
-  const [pageIdx, setPageIdx] = React.useState('P1');
+const MainFlow:FC<Props> = ({setState, setChoice}) => {
+  const [pageIdx, setPageIdx] = useState('P1');
   if (['P1', 'P2', 'P3', 'P8'].includes(pageIdx)) {
     return <TransitionPage pageIdx={pageIdx} setPageIdx={setPageIdx} />;
   } else {
-    return <QuestionPage pageIdx={pageIdx} setPageIdx={setPageIdx} />;
+    return <QuestionPage pageIdx={pageIdx} setPageIdx={setPageIdx} setState={setState} setChoice={setChoice} />;
   }
 };
 
@@ -74,8 +80,10 @@ const TransitionPage = ({ pageIdx, setPageIdx }: { pageIdx: string, setPageIdx: 
   );
 };
 
-const QuestionPage = ({ pageIdx, setPageIdx }: { pageIdx: string, setPageIdx: (idx: string) => void }) => {
+const QuestionPage = ({ pageIdx, setPageIdx, setState, setChoice }: { pageIdx: string, setPageIdx: (idx: string) => void, setState: (state: number) => void, setChoice: (choice: string) => void }) => {
   const { question, options, buttonText, img } = qconfig[pageIdx];
+  const [nextPage, setNextPage] = useState('');
+  const [selectedIdx, setSelectedIdx] = useState<number|null>(null);
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-r from-wi-pink to-wi-lemon p-10">
       <h1 className="bg-wi-primary text-white text-center p-4 rounded-lg mb-6">
@@ -85,15 +93,33 @@ const QuestionPage = ({ pageIdx, setPageIdx }: { pageIdx: string, setPageIdx: (i
         {options.map((option, idx) => (
           <button
             key={idx}
-            className="bg-white text-wi-primary p-3 rounded-full shadow-md transition duration-300"
-            onClick={() => setPageIdx(option.nextPage)}
+            className={`bg-white ${
+              selectedIdx === idx ? 'bg-gray-300' : 'bg-white'
+            } text-wi-primary p-3 rounded-full shadow-md transition duration-300`}
+            onClick={() => {
+              setNextPage(option.nextPage);
+              setSelectedIdx(idx);
+            }}
           >
             {option.text}
           </button>
         ))}
       </div>
       <button
-        onClick={() => setPageIdx(options[0].nextPage)}
+        onClick={() => {
+          if (nextPage === ''){
+            return;
+          }
+          if (nextPage === 'final'){
+            //setChoice('final')
+            setState(2);
+            return;
+          }
+          setPageIdx(nextPage)
+          // save choice
+          setNextPage('')
+          setSelectedIdx(null)
+        }}
         className="bg-wi-primary text-white py-2 px-6 rounded-full transition duration-300"
       >
         {buttonText}
