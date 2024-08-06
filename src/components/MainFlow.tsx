@@ -48,7 +48,7 @@ const MainFlow:FC<Props> = ({setState, setChoice}) => {
 const TransitionPage = ({ pageIdx, setPageIdx }: { pageIdx: string, setPageIdx: (idx: string) => void }) => {
   const { nextPage, img1, text1, img2, buttonText } = tconfig[pageIdx];
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-r from-wi-pink to-wi-lemon p-10">
+    <div className="flex flex-col items-center justify-center h-screen">
       {img1.path && (
         <Image 
           src={img1.path} 
@@ -58,8 +58,10 @@ const TransitionPage = ({ pageIdx, setPageIdx }: { pageIdx: string, setPageIdx: 
           className="mb-4"
         />
       )}
-      <h1 className="bg-gray-700 text-white p-4 rounded-lg mb-4 text-center">
-        {text1}
+      <h1 className="bg-gray-700 text-wi-primary p-4 rounded-3xl mb-4 text-center">
+        <pre>
+          {text1}
+        </pre>
       </h1>
       {img2.path && (
         <Image 
@@ -85,17 +87,19 @@ const QuestionPage = ({ pageIdx, setPageIdx, setState, setChoice }: { pageIdx: s
   const [nextPage, setNextPage] = useState('');
   const [selectedIdx, setSelectedIdx] = useState<number|null>(null);
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-r from-wi-pink to-wi-lemon p-10">
-      <h1 className="bg-wi-primary text-white text-center p-4 rounded-lg mb-6">
-        {question}
+    <div className="flex flex-col items-center justify-center h-screen">
+      <h1 className="bg-wi-primary text-gray-700 text-center p-4 rounded-3xl mb-6">
+        <pre>
+          {question}
+        </pre>
       </h1>
       <div className="flex flex-col space-y-4 mb-6">
         {options.map((option, idx) => (
           <button
             key={idx}
             className={`bg-white ${
-              selectedIdx === idx ? 'bg-gray-300' : 'bg-white'
-            } text-wi-primary p-3 rounded-full shadow-md transition duration-300`}
+              selectedIdx === idx ? 'bg-gray-400' : 'bg-white'
+            } outline outline-wi-primary text-gray-700 p-3 rounded-full shadow-md transition duration-300`}
             onClick={() => {
               setNextPage(option.nextPage);
               setSelectedIdx(idx);
@@ -120,7 +124,7 @@ const QuestionPage = ({ pageIdx, setPageIdx, setState, setChoice }: { pageIdx: s
           setNextPage('')
           setSelectedIdx(null)
         }}
-        className="bg-wi-primary text-white py-2 px-6 rounded-full transition duration-300"
+        className="bg-wi-primary text-gray-700 py-2 px-6 rounded-full transition duration-300"
       >
         {buttonText}
       </button>

@@ -1,6 +1,6 @@
 {
     "P4": {
-        "question": "คุณนอนต่อเพลิน ตื่นขึ้นมาอีกทีพบว่าเลยเวล\nเช็คชื่อไปแล้ว คุณเลือกที่จะ",
+        "question": "คุณนอนต่อเพลิน ตื่นขึ้นมาอีกทีพบว่าเลยเวลา\nเช็คชื่อไปแล้ว คุณเลือกที่จะ",
         "options": [
             {
                 "text": "โทรปรึกษาเพื่อน",
@@ -229,6 +229,152 @@
         "buttonText": "ถัดไป",
         "img": {
             "path": "/pagePictures/m1_2.png",
+            "width": 100,
+            "height": 100
+        }
+    },
+    "T1": {
+        "question": "คุณอยากเข้าบูธเทคโนโลยีด้านไหน",
+        "options": [
+            {
+                "text": "เทคโนโลยี AI",
+                "nextPage": "final",
+                "score": ""
+            },
+            {
+                "text": "เทคโนโลยีการแพทย์",
+                "nextPage": "T1_2",
+                "score": ""
+            }
+        ],
+        "buttonText": "ถัดไป",
+        "img": {
+            "path": "/pagePictures/t1.png",
+            "width": 100,
+            "height": 100
+        }
+    },
+    "T1_2": {
+        "question": "คุณสนใจเทคโนโลยีการแพทย์ด้านไหน",
+        "options": [
+            {
+                "text": "ด้านยา",
+                "nextPage": "T1_2_1",
+                "score": ""
+            },
+            {
+                "text": "ด้านพันธุกรรม",
+                "nextPage": "T1_2_2",
+                "score": ""
+            },
+            {
+                "text": "ด้านอำนวยความสะดวก",
+                "nextPage": "T1_2_3",
+                "score": ""
+            }
+        ],
+        "buttonText": "ถัดไป",
+        "img": {
+            "path": "/pagePictures/t1_2.png",
+            "width": 100,
+            "height": 100
+        }
+    },
+    "T1_2_1": {
+        "question": "คุณสนใจด้านยา ในเรื่องไหน",
+        "options": [
+            {
+                "text": "Precision medicine",
+                "nextPage": "final",
+                "score": ""
+            },
+            {
+                "text": "Nanomedicine",
+                "nextPage": "final",
+                "score": ""
+            },
+            {
+                "text": "Lab tour",
+                "nextPage": "final",
+                "score": ""
+            }
+        ],
+        "buttonText": "ถัดไป",
+        "img": {
+            "path": "/pagePictures/t1_2_1.png",
+            "width": 100,
+            "height": 100
+        }
+    },
+    "T1_2_2": {
+        "question": "คุณสนใจด้านพันธุกรรม ในเรื่องไหน",
+        "options": [
+            {
+                "text": "Genomics",
+                "nextPage": "final",
+                "score": ""
+            },
+            {
+                "text": "DNA test",
+                "nextPage": "final",
+                "score": ""
+            }
+        ],
+        "buttonText": "ถัดไป",
+        "img": {
+            "path": "/pagePictures/t1_2_2.png",
+            "width": 100,
+            "height": 100
+        }
+    },
+    "T1_2_3": {
+        "question": "คุณสนใจการอำนวยความสะดวก ในเรื่องไหน",
+        "options": [
+            {
+                "text": "Telemedicine",
+                "nextPage": "final",
+                "score": ""
+            },
+            {
+                "text": "Artificial organ",
+                "nextPage": "final",
+                "score": ""
+            }
+        ],
+        "buttonText": "ถัดไป",
+        "img": {
+            "path": "/pagePictures/t1_2_3.png",
+            "width": 100,
+            "height": 100
+        }
+    },
+    "F1": {
+        "question": "คุณสนใจบูธการเงินในด้านไหน",
+        "options": [
+            {
+                "text": "Tax",
+                "nextPage": "final",
+                "score": ""
+            },
+            {
+                "text": "Investment",
+                "nextPage": "final",
+                "score": ""
+            },
+            {
+                "text": "Pitching model",
+                "nextPage": "final",
+                "score": ""
+            },
+            {
+                "text": "วางแผนการเงิน",
+                "nextPage": "final",
+                "score": ""
+            }
+        ],
+        "buttonText": "ถัดไป",
+        "img": {
+            "path": "/pagePictures/f1.png",
             "width": 100,
             "height": 100
         }
