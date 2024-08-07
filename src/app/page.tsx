@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [state, setState] = useState(0);
+  const [choice, setChoice] = useState('');
 
   const handleClick = () => {
     setState((prevState) => (prevState + 1) % 3);
@@ -26,7 +27,7 @@ export default function Home() {
         jnajodnawjdnij
       </p>
       {state === 0 && <HomeScreen />}
-      {state === 1 && <MainFlow />}
+      {state === 1 && <MainFlow setChoice={setChoice} setState={setState} />}
       {state === 2 && <Result />}
     </main>
   );

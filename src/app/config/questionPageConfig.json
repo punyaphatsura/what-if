@@ -1,6 +1,6 @@
 {
     "P4": {
-        "question": "คุณนอนต่อเพลิน ตื่นขึ้นมาอีกทีพบว่าเลยเวล\nเช็คชื่อไปแล้ว คุณเลือกที่จะ",
+        "question": "คุณนอนต่อเพลิน ตื่นขึ้นมาอีกทีพบว่าเลยเวลา\nเช็คชื่อไปแล้ว คุณเลือกที่จะ",
         "options": [
             {
                 "text": "โทรปรึกษาเพื่อน",
@@ -21,6 +21,360 @@
         "buttonText": "ถัดไป",
         "img": {
             "path": "/pagePictures/p4.png",
+            "width": 125,
+            "height": 125
+        }
+    },
+    "P5": {
+        "question": "คุณมาถึงห้องเรียนแล้ว\nในห้องเรียนคุณเป็นสายไหน",
+        "options": [
+            {
+                "text": "สายตั้งใจเรียนในห้อง เราทำได้!",
+                "nextPage": "P6",
+                "score": "M"
+            },
+            {
+                "text": "สายกลับไปเรียนย้อนที่ห้องดีกว่า\nสมัยนี้มีกรอเร็ว กรอข้ามคลิปแล้ว",
+                "nextPage": "P6",
+                "score": "T"
+            },
+            {
+                "text": "สายเรียนเฉพาะเรื่องที่สนใจ การเรียนไม่ใช่ทาง\nเดียวที่รวยได้ซักหน่อย สมัยนี้เล่นหุ้นก็รวยได้",
+                "nextPage": "P6",
+                "score": "F"
+            }
+        ],
+        "buttonText": "ถัดไป",
+        "img": {
+            "path": "/pagePictures/p5.png",
+            "width": 250,
+            "height": 250
+        }
+    },
+    "P6": {
+        "question": "หลังเลิกเรียน คุณกลับมาพักที่หอ\nเปิดยูทูบดู คุณจะเลือกดูอะไร",
+        "options": [
+            {
+                "text": "ช่องเกี่ยวกับ social experiment",
+                "nextPage": "P7",
+                "score": "M"
+            },
+            {
+                "text": "ช่องรีวิว Gadget รุ่นใหม่",
+                "nextPage": "P7",
+                "score": "T"
+            },
+            {
+                "text": "ช่องแนะนำการลงทุน",
+                "nextPage": "P7",
+                "score": "F"
+            }
+        ],
+        "buttonText": "ถัดไป",
+        "img": {
+            "path": "/pagePictures/p6.png",
+            "width": 200,
+            "height": 200
+        }
+    },
+    "P7": {
+        "question": "หลังจากพักแล้ว\nคุณอยากทำอะไรเป็นชิ้นเป็นอันซักหน่อย\nอย่างเช่น",
+        "options": [
+            {
+                "text": "เขียนไดอารี่ บันทึกความรู้สึกของตัวเอง",
+                "nextPage": "P8",
+                "score": "M"
+            },
+            {
+                "text": "ศึกษาแอพใหม่ๆ",
+                "nextPage": "P8",
+                "score": "T"
+            },
+            {
+                "text": "คิดว่าเหลือเงินใช้เดือนนี้อีกเท่าไหร่",
+                "nextPage": "P8",
+                "score": "F"
+            }
+        ],
+        "buttonText": "ถัดไป",
+        "img": {
+            "path": "",
+            "width": 100,
+            "height": 100
+        }
+    },
+    "P9": {
+        "question": "เมื่อถึงห้าง เพื่อนลากคุณไปร้านหนังสือ\nคุณสนใจหนังสือเล่มไหน",
+        "options": [
+            {
+                "text": "Emotional first aid",
+                "nextPage": "P10",
+                "score": "M"
+            },
+            {
+                "text": "Smartphone Brain เมื่อสมาร์ตโฟนปฏิวัติสมอง",
+                "nextPage": "P10",
+                "score": "T"
+            },
+            {
+                "text": "พ่อรวยสอนลูก",
+                "nextPage": "P10",
+                "score": "F"
+            }
+        ],
+        "buttonText": "ถัดไป",
+        "img": {
+            "path": "/pagePictures/p9.png",
+            "width": 150,
+            "height": 150
+        }
+    },
+    "P10": {
+        "question": "หลังซื้อหนังสือเสร็จ คุณกับเพื่อนเห็นบูธตั้งอยู่\nกลางห้าง มี 3 บูธใหญ่ตั้งอยู่\nคุณจะเลือกเข้าบูธไหน",
+        "options": [
+            {
+                "text": "บูธพูดคุยกับไลฟ์โค้ชชื่อดัง",
+                "nextPage": "M1",
+                "score": "M"
+            },
+            {
+                "text": "บูธเทคโนโลยี",
+                "nextPage": "T1",
+                "score": "T"
+            },
+            {
+                "text": "บูธการเงิน",
+                "nextPage": "F1",
+                "score": "F"
+            }
+        ],
+        "buttonText": "ถัดไป",
+        "img": {
+            "path": "/pagePictures/p10.png",
+            "width": 175,
+            "height": 175
+        }
+    },
+    "M1": {
+        "question": "มีโต๊ะยาว 2 ฝั่งซึ่งไลฟ์โค้ชหลายคนนั่งอยู่\nคุณรู้สึกตื่นเต้นมากที่ได้เจอไลฟ์โค้ชที่รู้จักตัวเป็นๆ\nคุณจะเลือกคุยกับไลฟ์โค้ชด้านไหน",
+        "options": [
+            {
+                "text": "ไลฟ์โค้ชด้านการพัฒนาทักษะชีวิต",
+                "nextPage": "M1_1",
+                "score": ""
+            },
+            {
+                "text": "ไลฟ์โค้ชด้านการรู้จักตนเอง",
+                "nextPage": "M1_2",
+                "score": ""
+            }
+        ],
+        "buttonText": "ถัดไป",
+        "img": {
+            "path": "",
+            "width": 100,
+            "height": 100
+        }
+    },
+    "M1_1": {
+        "question": "คุณอยากถามไลฟ์โค้ช\nเกี่ยวกับการพัฒนาทักษะชีวิตด้านไหน",
+        "options": [
+            {
+                "text": "การสื่อสารให้มัดใจผู้ฟัง",
+                "nextPage": "final",
+                "score": ""
+            },
+            {
+                "text": "การเปิดใจรับฟังคำแนะนำของผู้อื่น",
+                "nextPage": "final",
+                "score": ""
+            },
+            {
+                "text": "การแก้ปัญหาแบบเป็นระบบ",
+                "nextPage": "final",
+                "score": ""
+            },
+            {
+                "text": "การล้มแล้วลุกขึ้นมาใหม่ได้",
+                "nextPage": "final",
+                "score": ""
+            }
+        ],
+        "buttonText": "ถัดไป",
+        "img": {
+            "path": "",
+            "width": 100,
+            "height": 100
+        }
+    },
+    "M1_2": {
+        "question": "คุณจะปรึกษาไลฟ์โค้ชเรื่องไหน",
+        "options": [
+            {
+                "text": "การรู้จักตนเอง",
+                "nextPage": "final",
+                "score": ""
+            },
+            {
+                "text": "การควบคุมอารมณ์อย่างเหมาะสม",
+                "nextPage": "final",
+                "score": ""
+            },
+            {
+                "text": "การตามหาสิ่งที่ตัวเองต้องการในชีวิต",
+                "nextPage": "final",
+                "score": ""
+            }
+        ],
+        "buttonText": "ถัดไป",
+        "img": {
+            "path": "",
+            "width": 100,
+            "height": 100
+        }
+    },
+    "T1": {
+        "question": "คุณอยากเข้าบูธเทคโนโลยีด้านไหน",
+        "options": [
+            {
+                "text": "เทคโนโลยี AI",
+                "nextPage": "final",
+                "score": ""
+            },
+            {
+                "text": "เทคโนโลยีการแพทย์",
+                "nextPage": "T1_2",
+                "score": ""
+            }
+        ],
+        "buttonText": "ถัดไป",
+        "img": {
+            "path": "/pagePictures/t1.png",
+            "width": 100,
+            "height": 100
+        }
+    },
+    "T1_2": {
+        "question": "คุณสนใจเทคโนโลยีการแพทย์ด้านไหน",
+        "options": [
+            {
+                "text": "ด้านยา",
+                "nextPage": "T1_2_1",
+                "score": ""
+            },
+            {
+                "text": "ด้านพันธุกรรม",
+                "nextPage": "T1_2_2",
+                "score": ""
+            },
+            {
+                "text": "ด้านอำนวยความสะดวก",
+                "nextPage": "T1_2_3",
+                "score": ""
+            }
+        ],
+        "buttonText": "ถัดไป",
+        "img": {
+            "path": "",
+            "width": 100,
+            "height": 100
+        }
+    },
+    "T1_2_1": {
+        "question": "คุณสนใจด้านยา ในเรื่องไหน",
+        "options": [
+            {
+                "text": "Precision medicine",
+                "nextPage": "final",
+                "score": ""
+            },
+            {
+                "text": "Nanomedicine",
+                "nextPage": "final",
+                "score": ""
+            },
+            {
+                "text": "Lab tour",
+                "nextPage": "final",
+                "score": ""
+            }
+        ],
+        "buttonText": "ถัดไป",
+        "img": {
+            "path": "/pagePictures/t1_2_1.png",
+            "width": 150,
+            "height": 150
+        }
+    },
+    "T1_2_2": {
+        "question": "คุณสนใจด้านพันธุกรรม ในเรื่องไหน",
+        "options": [
+            {
+                "text": "Genomics",
+                "nextPage": "final",
+                "score": ""
+            },
+            {
+                "text": "DNA test",
+                "nextPage": "final",
+                "score": ""
+            }
+        ],
+        "buttonText": "ถัดไป",
+        "img": {
+            "path": "/pagePictures/t1_2_2.png",
+            "width": 100,
+            "height": 100
+        }
+    },
+    "T1_2_3": {
+        "question": "คุณสนใจการอำนวยความสะดวก ในเรื่องไหน",
+        "options": [
+            {
+                "text": "Telemedicine",
+                "nextPage": "final",
+                "score": ""
+            },
+            {
+                "text": "Artificial organ",
+                "nextPage": "final",
+                "score": ""
+            }
+        ],
+        "buttonText": "ถัดไป",
+        "img": {
+            "path": "",
+            "width": 100,
+            "height": 100
+        }
+    },
+    "F1": {
+        "question": "คุณสนใจบูธการเงินในด้านไหน",
+        "options": [
+            {
+                "text": "Tax",
+                "nextPage": "final",
+                "score": ""
+            },
+            {
+                "text": "Investment",
+                "nextPage": "final",
+                "score": ""
+            },
+            {
+                "text": "Pitching model",
+                "nextPage": "final",
+                "score": ""
+            },
+            {
+                "text": "วางแผนการเงิน",
+                "nextPage": "final",
+                "score": ""
+            }
+        ],
+        "buttonText": "ถัดไป",
+        "img": {
+            "path": "/pagePictures/f1.png",
             "width": 100,
             "height": 100
         }
