@@ -11,7 +11,7 @@ export default function Home() {
   const handleClick = () => {
     setState((prevState) => (prevState + 1) % 3);
   };
- 
+
   useEffect(() => {
     const test = async () => {
       const res = await axios.get("/api/home");
@@ -19,9 +19,9 @@ export default function Home() {
     };
     test();
   }, []);
- 
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-between">
       {/* <p onClick={handleClick} className="cursor-pointer">
         TAP JAAAAAA
       </p> */}
@@ -31,4 +31,3 @@ export default function Home() {
     </main>
   );
 }
-
