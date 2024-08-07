@@ -15,7 +15,7 @@ export default function Home() {
 
   useEffect(() => {
     const test = async () => {
-      const res = await axios.get("http://localhost:3000/api/home");
+      const res = await axios.get("/api/home");
       console.log(res.data);
     };
     test();

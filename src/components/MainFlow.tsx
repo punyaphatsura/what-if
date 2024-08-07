@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React, { FC, useEffect, useState } from "react";
 import transitionPageConfig from "../app/config/transitionPageConfig.json";
@@ -7,35 +7,19 @@ import Image from 'next/image';
 import next from "next";
 import { log } from "console";
 
+
+import {
+  TransitionPageConfigType,
+  QuestionPageConfigType,
+} from "@/utils/types/PageConfig";
+
 interface Props {
   setState: (state: number) => void;
   setChoice: (choice: string) => void;
 }
 
-type TransitionPageConfig = {
-  [key: string]: {
-    nextPage: string;
-    img1: { path: string, width: number, height: number };
-    text1: string;
-    img2: { path: string, width: number, height: number };
-    buttonText: string;
-  };
-};
-type QuestionPageConfig = {
-  [key: string]: {
-    question: string;
-    options: {
-      text: string;
-      nextPage: string;
-      score: string;
-    }[];
-    buttonText: string;
-    img: { path: string, width: number, height: number };
-  };
-};
-
-const tconfig: TransitionPageConfig = transitionPageConfig;
-const qconfig: QuestionPageConfig = questionPageConfig;
+const tconfig: TransitionPageConfigType = transitionPageConfig;
+const qconfig: QuestionPageConfigType = questionPageConfig;
 
 const MainFlow:FC<Props> = ({setState, setChoice}) => {
   const [pageIdx, setPageIdx] = useState('P1');
@@ -57,16 +41,22 @@ const MainFlow:FC<Props> = ({setState, setChoice}) => {
   }
 };
 
-const TransitionPage = ({ pageIdx, setPageIdx }: { pageIdx: string, setPageIdx: (idx: string) => void }) => {
+const TransitionPage = ({
+  pageIdx,
+  setPageIdx,
+}: {
+  pageIdx: string;
+  setPageIdx: (idx: string) => void;
+}) => {
   const { nextPage, img1, text1, img2, buttonText } = tconfig[pageIdx];
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       {img1.path && (
-        <Image 
-          src={img1.path} 
-          alt="img1" 
-          width={img1.width} 
-          height={img1.height} 
+        <Image
+          src={img1.path}
+          alt="img1"
+          width={img1.width}
+          height={img1.height}
           className="mb-4"
         />
       )}
@@ -76,15 +66,15 @@ const TransitionPage = ({ pageIdx, setPageIdx }: { pageIdx: string, setPageIdx: 
         </pre>
       </h1>
       {img2.path && (
-        <Image 
-          src={img2.path} 
-          alt="img2" 
-          width={img2.width} 
-          height={img2.height} 
+        <Image
+          src={img2.path}
+          alt="img2"
+          width={img2.width}
+          height={img2.height}
           className="mb-4"
         />
       )}
-      <button 
+      <button
         onClick={() => setPageIdx(nextPage)}
         className="bg-wi-primary text-white py-2 px-6 rounded-full transition duration-300"
       >
@@ -116,7 +106,7 @@ const QuestionPage = ({
           {question}
         </pre>
       </h1>
-      <div className="flex flex-col space-y-4 mb-6">
+      <div className="mb-6 flex flex-col space-y-4">
         {options.map((option, idx) => (
           <button
             key={idx}
