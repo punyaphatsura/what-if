@@ -133,7 +133,6 @@ const QuestionPage = ({
             return;
           }
           nextPageHandler(pageIdx, options[selectedIdx!].score, nextPage)
-          // save choice
           setNextPage('')
           setSelectedIdx(null)
         }}
