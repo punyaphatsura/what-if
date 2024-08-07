@@ -1,10 +1,11 @@
 'use client'
 
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import transitionPageConfig from "../app/config/transitionPageConfig.json";
 import questionPageConfig from "../app/config/questionPageConfig.json";
 import Image from 'next/image';
 import next from "next";
+import { log } from "console";
 
 interface Props {
   setState: (state: number) => void;
@@ -38,10 +39,21 @@ const qconfig: QuestionPageConfig = questionPageConfig;
 
 const MainFlow:FC<Props> = ({setState, setChoice}) => {
   const [pageIdx, setPageIdx] = useState('P1');
+  const [log, setLog] = useState<{ page: string, choice: string }[]>([]);
+
+  const nextPageHandler = (currentPage: string, choice: string, nextPage: string) => {
+    setLog([...log, { page: currentPage, choice }]);
+    setPageIdx(nextPage);
+  };
+
+  useEffect(() => {
+    console.log(JSON.stringify(log)); // Log the updated log state
+  }, [log]);
+
   if (['P1', 'P2', 'P3', 'P8'].includes(pageIdx)) {
     return <TransitionPage pageIdx={pageIdx} setPageIdx={setPageIdx} />;
   } else {
-    return <QuestionPage pageIdx={pageIdx} setPageIdx={setPageIdx} setState={setState} setChoice={setChoice} />;
+    return <QuestionPage pageIdx={pageIdx} nextPageHandler={nextPageHandler} setState={setState} setChoice={setChoice} />;
   }
 };
 
@@ -82,10 +94,21 @@ const TransitionPage = ({ pageIdx, setPageIdx }: { pageIdx: string, setPageIdx: 
   );
 };
 
-const QuestionPage = ({ pageIdx, setPageIdx, setState, setChoice }: { pageIdx: string, setPageIdx: (idx: string) => void, setState: (state: number) => void, setChoice: (choice: string) => void }) => {
+const QuestionPage = ({
+  pageIdx,
+  nextPageHandler,
+  setState,
+  setChoice,
+}: {
+  pageIdx: string;
+  nextPageHandler: (currentPage: string, choice: string, nextPage: string) => void;
+  setState: (state: number) => void;
+  setChoice: (choice: string) => void;
+}) => {
   const { question, options, buttonText, img } = qconfig[pageIdx];
   const [nextPage, setNextPage] = useState('');
   const [selectedIdx, setSelectedIdx] = useState<number|null>(null);
+
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       <h1 className="bg-wi-primary text-gray-700 text-center p-4 rounded-3xl mb-6">
@@ -115,11 +138,11 @@ const QuestionPage = ({ pageIdx, setPageIdx, setState, setChoice }: { pageIdx: s
             return;
           }
           if (nextPage === 'final'){
-            //setChoice('final')
+            //setChoice(finalChoice);
             setState(2);
             return;
           }
-          setPageIdx(nextPage)
+          nextPageHandler(pageIdx, options[selectedIdx!].score, nextPage)
           // save choice
           setNextPage('')
           setSelectedIdx(null)
