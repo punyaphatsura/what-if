@@ -97,7 +97,7 @@ const QuestionPage = ({ pageIdx, setPageIdx, setState, setChoice }: { pageIdx: s
         {options.map((option, idx) => (
           <button
             key={idx}
-            className={`bg-white ${
+            className={`${
               selectedIdx === idx ? 'bg-gray-400' : 'bg-white'
             } outline outline-wi-primary text-gray-700 p-3 rounded-full shadow-md transition duration-300`}
             onClick={() => {
