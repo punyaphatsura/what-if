@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [state, setState] = useState(0);
-  const [choice, setChoice] = useState('');
+  const [choice, setChoice] = useState("");
 
   const handleClick = () => {
     setState((prevState) => (prevState + 1) % 3);
@@ -22,11 +22,11 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-between">
       <p onClick={handleClick} className="cursor-pointer">
-        jnajodnawjdnij
+        TAP JAAAAAA
       </p>
-      {state === 0 && <HomeScreen />}
+      {state === 0 && <HomeScreen handleClick={handleClick} />}
       {state === 1 && <MainFlow setChoice={setChoice} setState={setState} />}
       {state === 2 && <Result />}
     </main>
