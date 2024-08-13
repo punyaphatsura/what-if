@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Noto_Sans_Thai } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const noto = Noto_Sans_Thai({ subsets: ["thai"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={noto.className}>
         <div className="bg-gradient-to-br from-wi-blue/50 via-wi-pink/50 to-wi-lemon/50">
           {children}
         </div>

@@ -3,10 +3,9 @@
 import React, { FC, useEffect, useState } from "react";
 import transitionPageConfig from "../app/config/transitionPageConfig.json";
 import questionPageConfig from "../app/config/questionPageConfig.json";
-import Image from 'next/image';
+import Image from "next/image";
 import next from "next";
 import { log } from "console";
-
 
 import {
   TransitionPageConfigType,
@@ -21,11 +20,15 @@ interface Props {
 const tconfig: TransitionPageConfigType = transitionPageConfig;
 const qconfig: QuestionPageConfigType = questionPageConfig;
 
-const MainFlow:FC<Props> = ({setState, setChoice}) => {
-  const [pageIdx, setPageIdx] = useState('P1');
-  const [log, setLog] = useState<{ page: string, choice: string }[]>([]);
+const MainFlow: FC<Props> = ({ setState, setChoice }) => {
+  const [pageIdx, setPageIdx] = useState("P1");
+  const [log, setLog] = useState<{ page: string; choice: string }[]>([]);
 
-  const nextPageHandler = (currentPage: string, choice: string, nextPage: string) => {
+  const nextPageHandler = (
+    currentPage: string,
+    choice: string,
+    nextPage: string,
+  ) => {
     setLog([...log, { page: currentPage, choice }]);
     setPageIdx(nextPage);
   };
@@ -34,10 +37,17 @@ const MainFlow:FC<Props> = ({setState, setChoice}) => {
     console.log(JSON.stringify(log)); // Log the updated log state
   }, [log]);
 
-  if (['P1', 'P2', 'P3', 'P8'].includes(pageIdx)) {
+  if (["P1", "P2", "P3", "P8"].includes(pageIdx)) {
     return <TransitionPage pageIdx={pageIdx} setPageIdx={setPageIdx} />;
   } else {
-    return <QuestionPage pageIdx={pageIdx} nextPageHandler={nextPageHandler} setState={setState} setChoice={setChoice} />;
+    return (
+      <QuestionPage
+        pageIdx={pageIdx}
+        nextPageHandler={nextPageHandler}
+        setState={setState}
+        setChoice={setChoice}
+      />
+    );
   }
 };
 
@@ -50,7 +60,7 @@ const TransitionPage = ({
 }) => {
   const { nextPage, img1, text1, img2, buttonText } = tconfig[pageIdx];
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex h-screen flex-col items-center justify-center">
       {img1.path && (
         <Image
           src={img1.path}
@@ -60,10 +70,10 @@ const TransitionPage = ({
           className="mb-4"
         />
       )}
-      <h1 className="bg-gray-700 text-wi-primary p-4 rounded-3xl mb-4 text-center">
-        <pre>
-          {text1}
-        </pre>
+      <h1 className="mb-4 rounded-3xl bg-gray-700 p-4 text-center text-wi-primary">
+        <p
+          dangerouslySetInnerHTML={{ __html: text1.replace(/\n/g, "<br/>") }}
+        />
       </h1>
       {img2.path && (
         <Image
@@ -76,7 +86,7 @@ const TransitionPage = ({
       )}
       <button
         onClick={() => setPageIdx(nextPage)}
-        className="bg-wi-primary text-white py-2 px-6 rounded-full transition duration-300"
+        className="rounded-full bg-wi-primary px-6 py-2 text-white transition duration-300"
       >
         {buttonText}
       </button>
@@ -91,28 +101,32 @@ const QuestionPage = ({
   setChoice,
 }: {
   pageIdx: string;
-  nextPageHandler: (currentPage: string, choice: string, nextPage: string) => void;
+  nextPageHandler: (
+    currentPage: string,
+    choice: string,
+    nextPage: string,
+  ) => void;
   setState: (state: number) => void;
   setChoice: (choice: string) => void;
 }) => {
   const { question, options, buttonText, img } = qconfig[pageIdx];
-  const [nextPage, setNextPage] = useState('');
-  const [selectedIdx, setSelectedIdx] = useState<number|null>(null);
+  const [nextPage, setNextPage] = useState("");
+  const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <h1 className="bg-wi-primary text-gray-700 text-center p-4 rounded-3xl mb-6">
-        <pre>
-          {question}
-        </pre>
+    <div className="flex h-screen flex-col items-center justify-center">
+      <h1 className="mb-6 rounded-3xl bg-wi-primary p-4 text-center text-gray-700">
+        <p
+          dangerouslySetInnerHTML={{ __html: question.replace(/\n/g, "<br/>") }}
+        />
       </h1>
       <div className="mb-6 flex flex-col space-y-4">
         {options.map((option, idx) => (
           <button
             key={idx}
             className={`${
-              selectedIdx === idx ? 'bg-gray-400' : 'bg-white'
-            } outline outline-wi-primary text-gray-700 p-3 rounded-full shadow-md transition duration-300`}
+              selectedIdx === idx ? "bg-gray-400" : "bg-white"
+            } rounded-full p-3 text-gray-700 shadow-md outline outline-wi-primary transition duration-300`}
             onClick={() => {
               setNextPage(option.nextPage);
               setSelectedIdx(idx);
@@ -124,19 +138,19 @@ const QuestionPage = ({
       </div>
       <button
         onClick={() => {
-          if (nextPage === ''){
+          if (nextPage === "") {
             return;
           }
-          if (nextPage === 'final'){
+          if (nextPage === "final") {
             //setChoice(finalChoice);
             setState(2);
             return;
           }
-          nextPageHandler(pageIdx, options[selectedIdx!].score, nextPage)
-          setNextPage('')
-          setSelectedIdx(null)
+          nextPageHandler(pageIdx, options[selectedIdx!].score, nextPage);
+          setNextPage("");
+          setSelectedIdx(null);
         }}
-        className="bg-wi-primary text-gray-700 py-2 px-6 rounded-full transition duration-300"
+        className="rounded-full bg-wi-primary px-6 py-2 text-gray-700 transition duration-300"
       >
         {buttonText}
       </button>
