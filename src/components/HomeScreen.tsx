@@ -19,16 +19,17 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ handleClick }) => {
     >
       <div>
         <div className="relative">
-          <div className="relative flex-col items-center justify-center">
+          <div className="relative flex flex-col items-center justify-center">
             <Image
               src="/images/bg_text_home.png"
               alt="bg"
-              width={600}
-              height={600}
+              width={800}
+              height={800}
+              className="w-6/7 h-auto max-w-[350px]"
             />
           </div>
           <div
-            className={`absolute inset-0 flex flex-col items-center justify-center text-center ${myFont.className}`}
+            className={`absolute inset-0 flex flex-col items-center justify-center text-center ${myFont.className} text-xl text-white`}
           >
             Who you are <br />
             if you aren&apos;t a medical <br />
