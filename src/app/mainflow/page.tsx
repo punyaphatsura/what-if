@@ -1,5 +1,5 @@
-import MainFlow from "@/components/MainFlow";
-import React from "react";
+import MainFlow from '@/components/MainFlow';
+import React from 'react';
 
 const Page = () => {
   return <MainFlow />;

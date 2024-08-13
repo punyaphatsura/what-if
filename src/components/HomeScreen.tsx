@@ -1,22 +1,19 @@
-"use client";
-import React from "react";
-import Image from "next/image";
-import localFont from "next/font/local";
+'use client';
+import React from 'react';
+import Image from 'next/image';
+import localFont from 'next/font/local';
 
 interface HomeScreenProps {
   handleClick: () => void;
 }
 
 const myFont = localFont({
-  src: "../fonts/Layiji_JaRaKeFadHangV1.ttf", // Path to your font file
+  src: '../fonts/Layiji_JaRaKeFadHangV1.ttf', // Path to your font file
 });
 
 const HomeScreen: React.FC<HomeScreenProps> = ({ handleClick }) => {
   return (
-    <div
-      className="flex min-h-screen flex-col items-center justify-center"
-      onClick={handleClick}
-    >
+    <div className="flex min-h-screen flex-col items-center justify-center" onClick={handleClick}>
       <div>
         <div className="relative">
           <div className="relative flex flex-col items-center justify-center">
@@ -29,8 +26,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ handleClick }) => {
             />
           </div>
           <div
-            className={`absolute inset-0 flex flex-col items-center justify-center text-center ${myFont.className} text-xl text-white`}
-          >
+            className={`absolute inset-0 flex flex-col items-center justify-center text-center ${myFont.className} text-xl text-white`}>
             Who you are <br />
             if you aren&apos;t a medical <br />
             student?

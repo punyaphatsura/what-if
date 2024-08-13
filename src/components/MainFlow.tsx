@@ -1,17 +1,14 @@
-"use client";
+'use client';
 
-import React, { FC, useEffect, useState } from "react";
-import transitionPageConfig from "../app/config/transitionPageConfig.json";
-import questionPageConfig from "../app/config/questionPageConfig.json";
-import calculateScore from "../utils/functions/calculateScore";
+import React, { FC, useEffect, useState } from 'react';
+import transitionPageConfig from '../app/config/transitionPageConfig.json';
+import questionPageConfig from '../app/config/questionPageConfig.json';
+import calculateScore from '../utils/functions/calculateScore';
 import Image from 'next/image';
-import next from "next";
-import { log } from "console";
+import next from 'next';
+import { log } from 'console';
 
-import {
-  TransitionPageConfigType,
-  QuestionPageConfigType,
-} from "@/utils/types/PageConfig";
+import { TransitionPageConfigType, QuestionPageConfigType } from '@/utils/types/PageConfig';
 
 interface Props {
   setState: (state: number) => void;
@@ -21,9 +18,9 @@ interface Props {
 const tconfig: TransitionPageConfigType = transitionPageConfig;
 const qconfig: QuestionPageConfigType = questionPageConfig;
 
-const MainFlow:FC<Props> = ({setState, setChoice}) => {
+const MainFlow: FC<Props> = ({ setState, setChoice }) => {
   const [pageIdx, setPageIdx] = useState('P1');
-  const [answers, setAnswers] = useState<{ page: string, choice: string }[]>([]);
+  const [answers, setAnswers] = useState<{ page: string; choice: string }[]>([]);
 
   const nextPageHandler = (currentPage: string, choice: string, nextPage: string) => {
     setAnswers([...answers, { page: currentPage, choice }]);
@@ -35,17 +32,17 @@ const MainFlow:FC<Props> = ({setState, setChoice}) => {
   }, [answers]);
 
   if (['P1', 'P2', 'P3', 'P8'].includes(pageIdx)) {
-    return <TransitionPage 
-      pageIdx={pageIdx} 
-      setPageIdx={setPageIdx} />;
+    return <TransitionPage pageIdx={pageIdx} setPageIdx={setPageIdx} />;
   } else {
-    return <QuestionPage 
-      pageIdx={pageIdx} 
-      nextPageHandler={nextPageHandler} 
-      setState={setState} 
-      setChoice={setChoice}
-      prevAnswers={answers} 
-    />;
+    return (
+      <QuestionPage
+        pageIdx={pageIdx}
+        nextPageHandler={nextPageHandler}
+        setState={setState}
+        setChoice={setChoice}
+        prevAnswers={answers}
+      />
+    );
   }
 };
 
@@ -66,12 +63,11 @@ const TransitionPage = ({
           width={img1.width}
           height={img1.height}
           className="mb-4"
+          priority
         />
       )}
       <h1 className="mb-4 rounded-3xl bg-gray-700 p-4 text-center text-wi-primary">
-        <p
-          dangerouslySetInnerHTML={{ __html: text1.replace(/\n/g, "<br/>") }}
-        />
+        <p dangerouslySetInnerHTML={{ __html: text1.replace(/\n/g, '<br/>') }} />
       </h1>
       {img2.path && (
         <Image
@@ -80,12 +76,12 @@ const TransitionPage = ({
           width={img2.width}
           height={img2.height}
           className="mb-4"
+          priority
         />
       )}
       <button
         onClick={() => setPageIdx(nextPage)}
-        className="rounded-full bg-wi-primary px-6 py-2 text-white transition duration-300"
-      >
+        className="rounded-full bg-wi-primary px-6 py-2 text-white transition duration-300">
         {buttonText}
       </button>
     </div>
@@ -100,48 +96,41 @@ const QuestionPage = ({
   prevAnswers,
 }: {
   pageIdx: string;
-  nextPageHandler: (
-    currentPage: string,
-    choice: string,
-    nextPage: string,
-  ) => void;
+  nextPageHandler: (currentPage: string, choice: string, nextPage: string) => void;
   setState: (state: number) => void;
   setChoice: (choice: string) => void;
   prevAnswers: { page: string; choice: string }[];
 }) => {
   const { question, options, buttonText, img } = qconfig[pageIdx];
-  const [nextPage, setNextPage] = useState("");
+  const [nextPage, setNextPage] = useState('');
   const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
 
   return (
     <div className="flex h-screen flex-col items-center justify-center">
       <h1 className="mb-6 rounded-3xl bg-wi-primary p-4 text-center text-gray-700">
-        <p
-          dangerouslySetInnerHTML={{ __html: question.replace(/\n/g, "<br/>") }}
-        />
+        <p dangerouslySetInnerHTML={{ __html: question.replace(/\n/g, '<br/>') }} />
       </h1>
       <div className="mb-6 flex flex-col space-y-4">
         {options.map((option, idx) => (
           <button
             key={idx}
             className={`${
-              selectedIdx === idx ? "bg-gray-400" : "bg-white"
+              selectedIdx === idx ? 'bg-gray-400' : 'bg-white'
             } rounded-full p-3 text-gray-700 shadow-md outline outline-wi-primary transition duration-300`}
             onClick={() => {
               setNextPage(option.nextPage);
               setSelectedIdx(idx);
-            }}
-          >
+            }}>
             {option.text}
           </button>
         ))}
       </div>
       <button
         onClick={() => {
-          if (nextPage === "") {
+          if (nextPage === '') {
             return;
           }
-          if (nextPage === 'final'){
+          if (nextPage === 'final') {
             // Assuming last page doesn't have any scorings to the options
             const result = calculateScore(prevAnswers);
             setChoice(result);
@@ -150,11 +139,10 @@ const QuestionPage = ({
             return;
           }
           nextPageHandler(pageIdx, options[selectedIdx!].score, nextPage);
-          setNextPage("");
+          setNextPage('');
           setSelectedIdx(null);
         }}
-        className="rounded-full bg-wi-primary px-6 py-2 text-gray-700 transition duration-300"
-      >
+        className="rounded-full bg-wi-primary px-6 py-2 text-gray-700 transition duration-300">
         {buttonText}
       </button>
       {img.path && (
@@ -164,6 +152,7 @@ const QuestionPage = ({
           width={img.width}
           height={img.height}
           className="mt-8"
+          priority
         />
       )}
     </div>
