@@ -6,15 +6,15 @@ const Result = () => {
   return (
     <div className="relative">
       <a
-        href="/result/m-export.png"
-        download={"m-export.png"}
+        href="/result/M-export.png"
+        download={"M-export.png"}
         className="absolute right-4 top-4"
       >
         <MdOutlineFileDownload className="h-8 w-8" />
       </a>
 
       <Image
-        src={"/result/m-result.svg"}
+        src={"/result/M-result.svg"}
         alt=""
         width={1920}
         height={1080}
