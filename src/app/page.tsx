@@ -7,28 +7,25 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [state, setState] = useState(0);
+  const [choice, setChoice] = useState("");
 
   const handleClick = () => {
     setState((prevState) => (prevState + 1) % 3);
   };
- 
+
   useEffect(() => {
     const test = async () => {
-      const res = await axios.get("http://localhost:3000/api/home");
+      const res = await axios.get("/api/home");
       console.log(res.data);
     };
     test();
   }, []);
- 
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between ">
-      {/* <p onClick={handleClick} className="cursor-pointer">
-        TAP JAAAAAA
-      </p> */}
+    <main className="flex min-h-screen flex-col items-center justify-between">
       {state === 0 && <HomeScreen handleClick={handleClick} />}
-      {state === 1 && <MainFlow />}
+      {state === 1 && <MainFlow setChoice={setChoice} setState={setState} />}
       {state === 2 && <Result />}
     </main>
   );
 }
-
