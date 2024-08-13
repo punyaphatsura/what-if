@@ -21,7 +21,7 @@ const Result = () => {
         layout="responsive"
         objectFit="contain"
         objectPosition="center"
-        className="aspect-auto h-screen w-full"
+        className="aspect-auto h-[100svh] w-full max-w-[450px]"
       />
     </div>
   );
