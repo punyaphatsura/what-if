@@ -5,8 +5,6 @@ import transitionPageConfig from '../app/config/transitionPageConfig.json';
 import questionPageConfig from '../app/config/questionPageConfig.json';
 import calculateScore from '../utils/functions/calculateScore';
 import Image from 'next/image';
-import next from 'next';
-import { log } from 'console';
 
 import { TransitionPageConfigType, QuestionPageConfigType } from '@/utils/types/PageConfig';
 
@@ -21,29 +19,44 @@ const qconfig: QuestionPageConfigType = questionPageConfig;
 const MainFlow: FC<Props> = ({ setState, setChoice }) => {
   const [pageIdx, setPageIdx] = useState('P1');
   const [answers, setAnswers] = useState<{ page: string; choice: string }[]>([]);
+  const [transitioning, setTransitioning] = useState(false);
 
   const nextPageHandler = (currentPage: string, choice: string, nextPage: string) => {
+    setTransitioning(true);
     setAnswers([...answers, { page: currentPage, choice }]);
-    setPageIdx(nextPage);
+    setTimeout(() => {
+      setPageIdx(nextPage);
+      setTransitioning(false);
+    }, 200);
+  };
+
+  const nextTransitionPageHandler = (nextPage: string) => {
+    setTransitioning(true);
+    setTimeout(() => {
+      setPageIdx(nextPage);
+      setTransitioning(false);
+    }, 100);
   };
 
   useEffect(() => {
     console.log(JSON.stringify(answers)); // Log the updated answers state
   }, [answers]);
 
-  if (['P1', 'P2', 'P3', 'P8'].includes(pageIdx)) {
-    return <TransitionPage pageIdx={pageIdx} setPageIdx={setPageIdx} />;
-  } else {
-    return (
-      <QuestionPage
-        pageIdx={pageIdx}
-        nextPageHandler={nextPageHandler}
-        setState={setState}
-        setChoice={setChoice}
-        prevAnswers={answers}
-      />
-    );
-  }
+  return (
+    <div className={`transition-all ${transitioning ? 'opacity-0' : 'opacity-100'}`}>
+      {['P1', 'P2', 'P3', 'P8'].includes(pageIdx) ? (
+        <TransitionPage pageIdx={pageIdx} setPageIdx={nextTransitionPageHandler} />
+      ) : (
+        <QuestionPage
+          pageIdx={pageIdx}
+          nextPageHandler={nextPageHandler}
+          setState={setState}
+          setChoice={setChoice}
+          prevAnswers={answers}
+        />
+      )}
+    </div>
+  );
 };
 
 const TransitionPage = ({
