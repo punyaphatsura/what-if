@@ -146,11 +146,15 @@ const QuestionPage = ({
           }
           if (nextPage === 'final') {
             // Assuming last page doesn't have any scorings to the options
-            const result = calculateScore(prevAnswers);
+            const finalAnswer = [
+              ...prevAnswers,
+              { page: pageIdx, choice: options[selectedIdx!].score },
+            ];
+            const result = calculateScore(finalAnswer);
             setChoice(result);
             console.log(result);
             try {
-              const body = { date: new Date(), result: prevAnswers };
+              const body = { date: new Date(), result: finalAnswer };
               await axios.post('/api/result', { ...body }).then(() => setState(2));
             } catch (error) {
               console.error('Error sending result to server:', error);
