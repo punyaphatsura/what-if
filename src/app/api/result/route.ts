@@ -8,10 +8,15 @@ export async function GET(request: NextRequest) {
   try {
     await connectDB();
 
-    // Fetch answers from the database
+    const path = request.nextUrl.searchParams.get('code');
+    if (path !== process.env.GET_RESULT_PATH)
+      return new NextResponse(JSON.stringify({ message: '404 Not Found' }), {
+        status: 418,
+        headers: { 'Content-Type': 'application/json' },
+      });
+
     const answers = await Answer.find({}, { _id: 0, __v: 0 }).lean();
 
-    // Flatten the data for Excel
     const flattenedAnswers = answers.map((answer) => ({
       date: answer.date,
       results: answer.result.map((result: { page: string; choice: string }) => ({
