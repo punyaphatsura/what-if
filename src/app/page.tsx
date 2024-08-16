@@ -25,7 +25,7 @@ export default function Home() {
     <main className="flex h-[100svh] flex-col items-center justify-between overflow-hidden">
       {state === 0 && <HomeScreen handleClick={handleClick} />}
       {state === 1 && <MainFlow setChoice={setChoice} setState={setState} />}
-      {state === 2 && <Result />}
+      {state === 2 && <Result choice={choice} />}
     </main>
   );
 }

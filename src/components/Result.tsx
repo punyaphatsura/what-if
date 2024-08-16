@@ -2,15 +2,19 @@ import React from 'react';
 import Image from 'next/image';
 import { MdOutlineFileDownload } from 'react-icons/md';
 
-const Result = () => {
-  return (
+interface ResultProps {
+  choice: string;
+}
+
+const Result: React.FC<ResultProps> = ({ choice }) => {
+  return ( 
     <div className="relative">
-      <a href="/result/M-export.png" download={'M-export.png'} className="absolute right-4 top-4">
+      <a href={`/result/${choice}-export.png`} download={`${choice}-export.png`} className="absolute right-4 top-4">
         <MdOutlineFileDownload className="h-8 w-8" />
       </a>
 
       <Image
-        src={'/result/M-result.svg'}
+        src={`/result/${choice}-result.svg`}
         alt=""
         width={1920}
         height={1080}
