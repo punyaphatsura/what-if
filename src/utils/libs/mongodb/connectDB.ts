@@ -1,17 +1,15 @@
-import mongoose, { ConnectOptions } from "mongoose";
+import mongoose, { ConnectOptions } from 'mongoose';
 
 let isConnected = false;
 
 const connectDB = async () => {
   if (isConnected) {
-    console.log("MongoDB is already connected");
+    console.log('MongoDB is already connected');
     return;
   }
 
   if (!process.env.MONGODB_URI) {
-    throw new Error(
-      "Please add your Mongo URI to .env.local or .env.production.",
-    );
+    throw new Error('Please add your Mongo URI to .env.local or .env.production.');
   }
 
   try {
@@ -20,7 +18,7 @@ const connectDB = async () => {
       useUnifiedTopology: true,
     } as ConnectOptions);
     isConnected = true;
-    console.log("Connected to Database successfully");
+    console.log('Connected to Database successfully');
   } catch (err) {
     console.error(`Failed to connect to Database - ${err}`);
   }

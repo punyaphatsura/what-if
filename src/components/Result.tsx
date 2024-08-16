@@ -7,9 +7,12 @@ interface ResultProps {
 }
 
 const Result: React.FC<ResultProps> = ({ choice }) => {
-  return ( 
+  return (
     <div className="relative">
-      <a href={`/result/${choice}-export.png`} download={`${choice}-export.png`} className="absolute right-4 top-4">
+      <a
+        href={`/result/${choice}-export.png`}
+        download={`${choice}-export.png`}
+        className="absolute right-4 top-4">
         <MdOutlineFileDownload className="h-8 w-8" />
       </a>
 
