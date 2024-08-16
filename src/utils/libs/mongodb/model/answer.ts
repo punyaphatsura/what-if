@@ -1,14 +1,25 @@
 // models/Data.js
 
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-const AnswerModel = new mongoose.Schema(
-  {},
+const ResultSchema = new mongoose.Schema(
   {
-    strict: false,
+    page: {
+      type: String,
+      required: true,
+    },
+    choice: {
+      type: String,
+    },
   },
+  { _id: false }
 );
 
-const Answer = mongoose.models.Answer || mongoose.model("Answer", AnswerModel);
+const AnswerSchema = new mongoose.Schema({
+  date: { type: Date, required: true },
+  result: [ResultSchema],
+});
+
+const Answer = mongoose.models.Answer || mongoose.model('Answer', AnswerSchema);
 
 export default Answer;

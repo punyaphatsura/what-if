@@ -1,19 +1,50 @@
 import connectDB from '@/utils/libs/mongodb/connectDB';
 import Answer from '@/utils/libs/mongodb/model/answer';
 
+import * as XLSX from 'xlsx';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest) {
   try {
     await connectDB();
-    const answers = await Answer.find({}, { _id: 0, __v: 0 });
-    return new NextResponse(
-      JSON.stringify({ message: 'Data fetched successfully', data: answers }),
-      {
-        status: 200,
-        headers: { 'Content-Type': 'application/json' },
-      }
+
+    // Fetch answers from the database
+    const answers = await Answer.find({}, { _id: 0, __v: 0 }).lean();
+
+    // Flatten the data for Excel
+    const flattenedAnswers = answers.map((answer) => ({
+      date: answer.date,
+      results: answer.result.map((result: { page: string; choice: string }) => ({
+        page: result.page,
+        choice: result.choice,
+      })),
+    }));
+
+    // Convert the flattened data to a format suitable for Excel
+    const data = flattenedAnswers.flatMap((answer) =>
+      answer.results.map((result: { page: string; choice: string }) => ({
+        date: answer.date,
+        page: result.page,
+        choice: result.choice,
+      }))
     );
+
+    // Create a worksheet and a workbook
+    const worksheet = XLSX.utils.json_to_sheet(data);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Answers');
+
+    // Write the workbook to a buffer
+    const buffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'buffer' });
+
+    // Create a response with the Excel file
+    return new NextResponse(buffer, {
+      status: 200,
+      headers: {
+        'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        'Content-Disposition': 'attachment; filename="answers.xlsx"',
+      },
+    });
   } catch (err) {
     console.error(err);
     return new NextResponse(
@@ -35,8 +66,7 @@ export async function POST(request: NextRequest) {
     const answer = new Answer(body);
     await answer.save();
 
-    const savedAnswer = answer.toObject(); // Convert to plain object
-    delete savedAnswer._id;
+    const savedAnswer = answer.toObject();
     return new NextResponse(
       JSON.stringify({ message: 'Data saved successfully', data: savedAnswer }),
       {
@@ -45,12 +75,9 @@ export async function POST(request: NextRequest) {
     );
   } catch (err) {
     console.error(err);
-    return new NextResponse(
-      JSON.stringify({ message: 'Failed to connect to Database or save data' }),
-      {
-        status: 500,
-        headers: { 'Content-Type': 'application/json' },
-      }
-    );
+    return new NextResponse(JSON.stringify({ message: err }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
   }
 }

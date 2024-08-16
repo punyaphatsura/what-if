@@ -18,14 +18,6 @@ export default function Home() {
     }, 300);
   };
 
-  useEffect(() => {
-    const test = async () => {
-      const res = await axios.get('/api/home');
-      console.log(res.data);
-    };
-    test();
-  }, []);
-
   return (
     <main className={`flex h-[100svh] flex-col items-center justify-between overflow-hidden`}>
       <div className={`transition-all ${transitioning ? 'opacity-0' : 'opacity-100'}`}>

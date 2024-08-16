@@ -7,6 +7,7 @@ import calculateScore from '../utils/functions/calculateScore';
 import Image from 'next/image';
 
 import { TransitionPageConfigType, QuestionPageConfigType } from '@/utils/types/PageConfig';
+import axios from 'axios';
 
 interface Props {
   setState: (state: number) => void;
@@ -139,7 +140,7 @@ const QuestionPage = ({
         ))}
       </div>
       <button
-        onClick={() => {
+        onClick={async () => {
           if (nextPage === '') {
             return;
           }
@@ -148,7 +149,12 @@ const QuestionPage = ({
             const result = calculateScore(prevAnswers);
             setChoice(result);
             console.log(result);
-            setState(2);
+            try {
+              const body = { date: new Date(), result: prevAnswers };
+              await axios.post('/api/result', { ...body }).then(() => setState(2));
+            } catch (error) {
+              console.error('Error sending result to server:', error);
+            }
             return;
           }
           nextPageHandler(pageIdx, options[selectedIdx!].score, nextPage);
