@@ -11,7 +11,7 @@ export default function calculateScore(log: { page: string; choice: string }[]):
   let c = 0;
   log.forEach((item) => {
     const choice = item.choice.toUpperCase();
-    if (choice != '') {
+    if (['M', 'T', 'F'].includes(choice)) {
       if (choice === 'M') {
         mScore += 1;
         lastM = c;
