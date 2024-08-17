@@ -7,7 +7,7 @@ export default function calculateScore(log: { page: string; choice: string }[]):
   let lastF = -1;
 
   console.log(log);
-
+  
   let c = 0;
   log.forEach((item) => {
     const choice = item.choice.toUpperCase();
