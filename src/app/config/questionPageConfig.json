@@ -161,12 +161,12 @@
       {
         "text": "ไลฟ์โค้ชด้านการพัฒนาทักษะชีวิต",
         "nextPage": "M1_1",
-        "score": ""
+        "score": "1"
       },
       {
         "text": "ไลฟ์โค้ชด้านการรู้จักตนเอง",
         "nextPage": "M1_2",
-        "score": ""
+        "score": "2"
       }
     ],
     "buttonText": "ถัดไป",
@@ -182,22 +182,22 @@
       {
         "text": "การสื่อสารให้มัดใจผู้ฟัง",
         "nextPage": "final",
-        "score": ""
+        "score": "1"
       },
       {
         "text": "การเปิดใจรับฟังคำแนะนำของผู้อื่น",
         "nextPage": "final",
-        "score": ""
+        "score": "2"
       },
       {
         "text": "การแก้ปัญหาแบบเป็นระบบ",
         "nextPage": "final",
-        "score": ""
+        "score": "3"
       },
       {
         "text": "การล้มแล้วลุกขึ้นมาใหม่ได้",
         "nextPage": "final",
-        "score": ""
+        "score": "4"
       }
     ],
     "buttonText": "ถัดไป",
@@ -213,17 +213,17 @@
       {
         "text": "การรู้จักตนเอง",
         "nextPage": "final",
-        "score": ""
+        "score": "1"
       },
       {
         "text": "การควบคุมอารมณ์อย่างเหมาะสม",
         "nextPage": "final",
-        "score": ""
+        "score": "2"
       },
       {
         "text": "การตามหาสิ่งที่ตัวเองต้องการในชีวิต",
         "nextPage": "final",
-        "score": ""
+        "score": "3"
       }
     ],
     "buttonText": "ถัดไป",
@@ -239,12 +239,12 @@
       {
         "text": "เทคโนโลยี AI",
         "nextPage": "final",
-        "score": ""
+        "score": "1"
       },
       {
         "text": "เทคโนโลยีการแพทย์",
         "nextPage": "T1_2",
-        "score": ""
+        "score": "2"
       }
     ],
     "buttonText": "ถัดไป",
@@ -260,17 +260,17 @@
       {
         "text": "ด้านยา",
         "nextPage": "T1_2_1",
-        "score": ""
+        "score": "1"
       },
       {
         "text": "ด้านพันธุกรรม",
         "nextPage": "T1_2_2",
-        "score": ""
+        "score": "2"
       },
       {
         "text": "ด้านอำนวยความสะดวก",
         "nextPage": "T1_2_3",
-        "score": ""
+        "score": "3"
       }
     ],
     "buttonText": "ถัดไป",
@@ -286,17 +286,17 @@
       {
         "text": "Precision medicine",
         "nextPage": "final",
-        "score": ""
+        "score": "1"
       },
       {
         "text": "Nanomedicine",
         "nextPage": "final",
-        "score": ""
+        "score": "2"
       },
       {
         "text": "Lab tour",
         "nextPage": "final",
-        "score": ""
+        "score": "3"
       }
     ],
     "buttonText": "ถัดไป",
@@ -312,12 +312,12 @@
       {
         "text": "Genomics",
         "nextPage": "final",
-        "score": ""
+        "score": "1"
       },
       {
         "text": "DNA test",
         "nextPage": "final",
-        "score": ""
+        "score": "2"
       }
     ],
     "buttonText": "ถัดไป",
@@ -333,12 +333,12 @@
       {
         "text": "Telemedicine",
         "nextPage": "final",
-        "score": ""
+        "score": "1"
       },
       {
         "text": "Artificial organ",
         "nextPage": "final",
-        "score": ""
+        "score": "2"
       }
     ],
     "buttonText": "ถัดไป",
@@ -354,22 +354,22 @@
       {
         "text": "Tax",
         "nextPage": "final",
-        "score": ""
+        "score": "1"
       },
       {
         "text": "Investment",
         "nextPage": "final",
-        "score": ""
+        "score": "2"
       },
       {
         "text": "Pitching model",
         "nextPage": "final",
-        "score": ""
+        "score": "3"
       },
       {
         "text": "วางแผนการเงิน",
         "nextPage": "final",
-        "score": "F"
+        "score": "4"
       }
     ],
     "buttonText": "ถัดไป",
