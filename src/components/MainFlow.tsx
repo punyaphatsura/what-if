@@ -7,6 +7,7 @@ import calculateScore from '../utils/functions/calculateScore';
 import Image from 'next/image';
 
 import { TransitionPageConfigType, QuestionPageConfigType } from '@/utils/types/PageConfig';
+import useImagePreloader from '@/utils/hooks/useImagePreloader'; // Import the preloader hook
 import axios from 'axios';
 
 interface Props {
@@ -21,6 +22,18 @@ const MainFlow: FC<Props> = ({ setState, setChoice }) => {
   const [pageIdx, setPageIdx] = useState('P1');
   const [answers, setAnswers] = useState<{ page: string; choice: string }[]>([]);
   const [transitioning, setTransitioning] = useState(false);
+  const [imageList, setImageList] = useState<string[]>([]);
+
+  useEffect(() => {
+    setImageList(
+      [
+        ...Object.values(tconfig).flatMap((config) => [config.img1.path, config.img2.path]),
+        ...Object.values(qconfig).flatMap((config) => config.img.path),
+      ].filter((path) => path !== '')
+    );
+  }, []);
+
+  const { imagesPreloaded } = useImagePreloader(imageList);
 
   const nextPageHandler = (currentPage: string, choice: string, nextPage: string) => {
     setTransitioning(true);
@@ -42,6 +55,15 @@ const MainFlow: FC<Props> = ({ setState, setChoice }) => {
   useEffect(() => {
     console.log(JSON.stringify(answers)); // Log the updated answers state
   }, [answers]);
+
+  if (!imagesPreloaded) {
+    // Show a loading spinner or placeholder while images are preloading
+    return (
+      <div className="flex h-screen items-center justify-center">
+        <div className="loader h-16 w-16 animate-spin rounded-full border-4 border-solid border-gray-200 border-t-wi-primary"></div>
+      </div>
+    );
+  }
 
   return (
     <div className={`transition-all ${transitioning ? 'opacity-0' : 'opacity-100'}`}>
