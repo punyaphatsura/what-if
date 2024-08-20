@@ -6,8 +6,6 @@ export default function calculateScore(log: { page: string; choice: string }[]):
   let lastT = -1;
   let lastF = -1;
 
-  console.log(log);
-  
   let c = 0;
   log.forEach((item) => {
     const choice = item.choice.toUpperCase();
@@ -26,8 +24,8 @@ export default function calculateScore(log: { page: string; choice: string }[]):
     }
   });
 
-  console.log(`mScore: ${mScore}, tScore: ${tScore}, fScore: ${fScore}`);
-  console.log(`lastM: ${lastM}, lastT: ${lastT}, lastF: ${lastF}`);
+  // console.log(`mScore: ${mScore}, tScore: ${tScore}, fScore: ${fScore}`);
+  // console.log(`lastM: ${lastM}, lastT: ${lastT}, lastF: ${lastF}`);
 
   // Determine the maximum score
   const maxScore = Math.max(mScore, tScore, fScore);
