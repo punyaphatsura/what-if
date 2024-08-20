@@ -118,9 +118,19 @@ const QuestionPage = ({
   const { question, options, buttonText, img } = qconfig[pageIdx];
   const [nextPage, setNextPage] = useState('');
   const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
+  const [loading, setLoading] = useState(false); // Add loading state
 
   return (
     <div className="flex h-screen flex-col items-center justify-center">
+      {loading && (
+        <div className="absolute h-full w-full bg-[rgba(0,0,0,0.7)]">
+          <div className="flex h-full items-center justify-center">
+            <div className="flex flex-col items-center">
+              <div className="loader mb-4 h-16 w-16 animate-spin rounded-full border-4 border-solid border-gray-200 border-t-wi-primary"></div>
+            </div>
+          </div>
+        </div>
+      )}
       <h1 className="mb-6 rounded-3xl bg-wi-primary p-4 text-center text-gray-700">
         <p dangerouslySetInnerHTML={{ __html: question.replace(/\n/g, '<br/>') }} />
       </h1>
@@ -134,38 +144,47 @@ const QuestionPage = ({
             onClick={() => {
               setNextPage(option.nextPage);
               setSelectedIdx(idx);
-            }}>
+            }}
+            disabled={loading} // Disable buttons while loading
+          >
             {option.text}
           </button>
         ))}
       </div>
       <button
         onClick={async () => {
-          if (nextPage === '') {
-            return;
-          }
+          if (nextPage === '' || selectedIdx === null || loading) return;
+
+          setLoading(true); // Start loading
+
           if (nextPage === 'final') {
-            // Assuming last page doesn't have any scorings to the options
             const finalAnswer = [
               ...prevAnswers,
-              { page: pageIdx, choice: options[selectedIdx!].score },
+              { page: pageIdx, choice: options[selectedIdx].score },
             ];
             const result = calculateScore(finalAnswer);
             setChoice(result);
-            console.log(result);
+
             try {
               const body = { date: new Date(), result: finalAnswer };
-              await axios.post('/api/result', { ...body }).then(() => setState(2));
+              await axios.post('/api/result', { ...body });
+              setState(2);
             } catch (error) {
               console.error('Error sending result to server:', error);
+            } finally {
+              setLoading(false); // Stop loading
             }
             return;
           }
-          nextPageHandler(pageIdx, options[selectedIdx!].score, nextPage);
+
+          nextPageHandler(pageIdx, options[selectedIdx].score, nextPage);
           setNextPage('');
           setSelectedIdx(null);
+          setLoading(false); // Stop loading
         }}
-        className="rounded-full bg-wi-primary px-6 py-2 text-gray-700 transition duration-300">
+        className="rounded-full bg-wi-primary px-6 py-2 text-gray-700 transition duration-300"
+        disabled={loading} // Disable button while loading
+      >
         {buttonText}
       </button>
       {img.path && (
