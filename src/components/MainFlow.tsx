@@ -21,18 +21,6 @@ const MainFlow: FC<Props> = ({ setState, setChoice }) => {
   const [pageIdx, setPageIdx] = useState('P1');
   const [answers, setAnswers] = useState<{ page: string; choice: string }[]>([]);
   const [transitioning, setTransitioning] = useState(false);
-  // const [imageList, setImageList] = useState<string[]>([]);
-
-  // useEffect(() => {
-  //   setImageList(
-  //     [
-  //       ...Object.values(tconfig).flatMap((config) => [config.img1.path, config.img2.path]),
-  //       ...Object.values(qconfig).flatMap((config) => config.img.path),
-  //     ].filter((path) => path !== '')
-  //   );
-  // }, []);
-
-  // const { imagesPreloaded } = useImagePreloader(imageList);
 
   const nextPageHandler = (currentPage: string, choice: string, nextPage: string) => {
     setTransitioning(true);
@@ -51,9 +39,9 @@ const MainFlow: FC<Props> = ({ setState, setChoice }) => {
     }, 100);
   };
 
-  useEffect(() => {
-    console.log(JSON.stringify(answers)); // Log the updated answers state
-  }, [answers]);
+  // useEffect(() => {
+  //   console.log(JSON.stringify(answers));
+  // }, [answers]);
 
   return (
     <div className={`transition-all ${transitioning ? 'opacity-0' : 'opacity-100'}`}>
