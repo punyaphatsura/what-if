@@ -27,7 +27,7 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ handleClick }) => {
           </div>
           <div
             className={`absolute inset-0 flex flex-col items-center justify-center text-center ${myFont.className} text-xl text-white`}>
-            Who you are <br />
+            Who are you <br />
             if you aren&apos;t a medical <br />
             student?
           </div>
