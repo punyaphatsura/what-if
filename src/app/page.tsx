@@ -37,7 +37,7 @@ export default function Home() {
     setTimeout(() => {
       setState((prevState) => (prevState + 1) % 3);
       setTransitioning(false);
-    }, 300);
+    }, 500);
   };
 
   return (

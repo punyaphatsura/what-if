@@ -28,7 +28,7 @@ const MainFlow: FC<Props> = ({ setState, setChoice }) => {
     setTimeout(() => {
       setPageIdx(nextPage);
       setTransitioning(false);
-    }, 200);
+    }, 500);
   };
 
   const nextTransitionPageHandler = (nextPage: string) => {
@@ -36,7 +36,7 @@ const MainFlow: FC<Props> = ({ setState, setChoice }) => {
     setTimeout(() => {
       setPageIdx(nextPage);
       setTransitioning(false);
-    }, 100);
+    }, 500);
   };
 
   // useEffect(() => {
@@ -44,7 +44,7 @@ const MainFlow: FC<Props> = ({ setState, setChoice }) => {
   // }, [answers]);
 
   return (
-    <div className={`transition-all ${transitioning ? 'opacity-0' : 'opacity-100'}`}>
+    <div className={`transition-all ${transitioning ? 'opacity-[0.01]' : 'opacity-100'}`}>
       {['P1', 'P2', 'P3', 'P8'].includes(pageIdx) ? (
         <TransitionPage pageIdx={pageIdx} setPageIdx={nextTransitionPageHandler} />
       ) : (
