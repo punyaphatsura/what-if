@@ -78,6 +78,8 @@ const TransitionPage = ({
           height={img1.height}
           className="mb-4"
           priority
+          placeholder="blur"
+          blurDataURL={img1.path}
         />
       )}
       <h1 className="mb-4 rounded-3xl bg-gray-700 p-4 text-center text-wi-primary">
@@ -91,6 +93,8 @@ const TransitionPage = ({
           height={img2.height}
           className="mb-4"
           priority
+          placeholder="blur"
+          blurDataURL={img2.path}
         />
       )}
       <button
@@ -195,6 +199,8 @@ const QuestionPage = ({
           height={img.height}
           className="mt-8"
           priority
+          placeholder="blur"
+          blurDataURL={img.path}
         />
       )}
     </div>

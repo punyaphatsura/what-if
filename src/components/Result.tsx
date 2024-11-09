@@ -25,6 +25,8 @@ const Result: React.FC<ResultProps> = ({ choice }) => {
         objectFit="contain"
         objectPosition="center"
         className="aspect-auto h-[100svh] w-full max-w-[450px]"
+        placeholder="blur"
+        blurDataURL={`/result/${choice.toLowerCase()}-result.svg`}
       />
     </div>
   );

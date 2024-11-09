@@ -23,6 +23,8 @@ const HomeScreen: React.FC<HomeScreenProps> = ({ handleClick }) => {
               width={800}
               height={800}
               className="w-6/7 h-auto max-w-[350px]"
+              placeholder="blur"
+              blurDataURL={'/images/bg_text_home.png'}
             />
           </div>
           <div
